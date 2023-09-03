@@ -1,9 +1,12 @@
 import React from 'react';
 import {Button, View} from 'react-native';
 
+// import {Context} from '../App';
+
 function HomeScreen({navigation}: any) {
+  //   const context: any = useContext(Context);
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View>
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Detail')}

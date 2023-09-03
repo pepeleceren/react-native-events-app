@@ -9,6 +9,7 @@ import PastEventsScreen from './views/PastEvents';
 import AccountScreen from './views/Account';
 import SearchScreen from './views/Search';
 import DetailScreen from './views/Detail';
+import {theme} from './theme/theme';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -23,17 +24,21 @@ function HomeStackScreen() {
   );
 }
 
+export const Context: any = React.createContext({});
+
 function App(): JSX.Element {
   return (
-    <NavigationContainer>
-      <StatusBar barStyle="dark-content" backgroundColor="white" />
-      <Tab.Navigator screenOptions={{headerShown: false}}>
-        <Tab.Screen name="Home" component={HomeStackScreen} />
-        <Tab.Screen name="Map" component={MapScreen} />
-        <Tab.Screen name="PastEvents" component={PastEventsScreen} />
-        <Tab.Screen name="Account" component={AccountScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Context.Provider value={{theme: theme}}>
+      <NavigationContainer>
+        <StatusBar barStyle="dark-content" backgroundColor="white" />
+        <Tab.Navigator screenOptions={{headerShown: false}}>
+          <Tab.Screen name="HomeStack" component={HomeStackScreen} />
+          <Tab.Screen name="Map" component={MapScreen} />
+          <Tab.Screen name="PastEvents" component={PastEventsScreen} />
+          <Tab.Screen name="Account" component={AccountScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Context.Provider>
   );
 }
 
