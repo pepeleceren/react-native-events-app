@@ -1,5 +1,6 @@
 import React from 'react';
-import {Button, View} from 'react-native';
+import {View} from 'react-native';
+import StdButton from '../components/stdButton';
 
 // import {Context} from '../App';
 
@@ -7,10 +8,8 @@ function HomeScreen({navigation}: any) {
   //   const context: any = useContext(Context);
   return (
     <View>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Detail')}
-      />
+      <StdButton title="Deneme" onPress={() => navigation.navigate('Detail')} />
+      <StdButton title="Deneme22" />
     </View>
   );
 }
