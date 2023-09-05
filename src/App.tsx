@@ -22,7 +22,7 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator screenOptions={{headerShown: false}}>
       <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Seaarch" component={SearchScreen} />
+      <HomeStack.Screen name="Search" component={SearchScreen} />
       <HomeStack.Screen name="Detail" component={DetailScreen} />
     </HomeStack.Navigator>
   );
@@ -38,7 +38,10 @@ function App(): JSX.Element {
   return (
     <Context.Provider value={{theme: theme, normalization: screenNormalizer}}>
       <SafeAreaView style={styles.safeArea}>
-        <StatusBar barStyle="dark-content" backgroundColor="white" />
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={theme.colors.background.primary}
+        />
         <NavigationContainer>
           <Tab.Navigator
             tabBar={tabBarFunc}
@@ -57,6 +60,7 @@ function App(): JSX.Element {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+    backgroundColor: theme.colors.background.primary,
   },
 });
 

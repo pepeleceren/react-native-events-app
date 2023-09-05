@@ -1,8 +1,9 @@
 import {paletteLight, hexToRGBA} from './colorPalettes';
+import {ScreenNormalization as screenNormalizer} from './screenNormalization';
 
 const palette = paletteLight;
 
-const theme: any = {
+const themeObject = {
   colors: {
     background: {
       primary: palette.base.white,
@@ -26,6 +27,7 @@ const theme: any = {
       tint2: palette.blue[8],
       tintTapState: palette.blue[9],
     },
+    seperetor: hexToRGBA(palette.grey[6], 37),
     ...palette,
   },
   spacing: {
@@ -38,10 +40,38 @@ const theme: any = {
   textVariants: {
     bodyBold: {
       fontFamily: 'SF Pro Text',
-      fontSize: 17,
+      fontSize: screenNormalizer.fontPixel(17),
       fontStyle: 'normal',
       fontWeight: '700',
-      lineHeight: 22,
+      lineHeight: screenNormalizer.fontPixel(22),
+    },
+    bodyDefault: {
+      fontFamily: 'SF Pro Text',
+      fontSize: screenNormalizer.fontPixel(17),
+      fontStyle: 'normal',
+      fontWeight: '400',
+      lineHeight: screenNormalizer.fontPixel(22),
+    },
+    subheadDefault: {
+      fontFamily: 'SF Pro Text',
+      fontSize: screenNormalizer.fontPixel(15),
+      fontStyle: 'normal',
+      fontWeight: '400',
+      lineHeight: screenNormalizer.fontPixel(20),
+    },
+    footnoteBold: {
+      fontFamily: 'SF Pro Text',
+      fontSize: screenNormalizer.fontPixel(13),
+      fontStyle: 'normal',
+      fontWeight: '700',
+      lineHeight: screenNormalizer.fontPixel(18),
+    },
+    footnoteDefault: {
+      fontFamily: 'SF Pro Text',
+      fontSize: screenNormalizer.fontPixel(13),
+      fontStyle: 'normal',
+      fontWeight: '400',
+      lineHeight: screenNormalizer.fontPixel(18),
     },
   },
 };
@@ -55,4 +85,4 @@ const theme: any = {
 //   },
 // };
 
-export default theme;
+export default themeObject;

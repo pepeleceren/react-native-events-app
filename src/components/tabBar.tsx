@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
@@ -39,7 +40,7 @@ function TabBar({state, descriptors, navigation}: any) {
             {label === 'HomeStack' && (
               <Home
                 height={screenNormalizer.heightPixel(20)}
-                width={screenNormalizer.widthPixel(18)}
+                width={screenNormalizer.widthPixel(20)}
                 fill={
                   isFocused
                     ? theme.colors.tint.tint
@@ -50,7 +51,7 @@ function TabBar({state, descriptors, navigation}: any) {
             {label === 'Map' && (
               <Map
                 height={screenNormalizer.heightPixel(20)}
-                width={screenNormalizer.widthPixel(17)}
+                width={screenNormalizer.widthPixel(20)}
                 fill={
                   isFocused
                     ? theme.colors.tint.tint
@@ -71,8 +72,8 @@ function TabBar({state, descriptors, navigation}: any) {
             )}
             {label === 'Account' && (
               <Account
-                height={screenNormalizer.heightPixel(26)}
-                width={screenNormalizer.widthPixel(22)}
+                height={screenNormalizer.heightPixel(22)}
+                width={screenNormalizer.widthPixel(17)}
                 fill={
                   isFocused
                     ? theme.colors.tint.tint
@@ -80,18 +81,17 @@ function TabBar({state, descriptors, navigation}: any) {
                 }
               />
             )}
-            {isFocused && (
-              <View
-                style={[
-                  styles.dot,
-                  {
-                    backgroundColor: isFocused
-                      ? theme.colors.tint.tint
-                      : theme.colors.label.primary,
-                  },
-                ]}
-              />
-            )}
+
+            <View
+              style={[
+                styles.dot,
+                {
+                  backgroundColor: isFocused
+                    ? theme.colors.tint.tint
+                    : 'transparent',
+                },
+              ]}
+            />
           </Button>
         );
       })}
@@ -102,16 +102,18 @@ function TabBar({state, descriptors, navigation}: any) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    borderTopColor: theme.colors.seperetor,
+    borderTopWidth: screenNormalizer.sensHeightPixel(0.33),
+    height: screenNormalizer.heightPixel(50),
   },
   button: {
     flex: 1,
     flexDirection: 'column',
-    height: screenNormalizer.heightPixel(50),
   },
   dot: {
     width: 4,
     height: 4,
-    marginTop: screenNormalizer.pixelSizeVertical(6),
+    marginTop: screenNormalizer.pixelSizeVertical(4),
     borderRadius: 4,
   },
 });

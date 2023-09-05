@@ -1,4 +1,4 @@
-import {StyleSheet, Pressable, Text} from 'react-native';
+import {StyleSheet, Pressable, Text, TextStyle} from 'react-native';
 import React from 'react';
 import {screenNormalizer, theme} from '../utils/theme';
 
@@ -21,7 +21,7 @@ export default function StdButton(props: any) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles: any = StyleSheet.create({
   pressable: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     minHeight: screenNormalizer.heightPixel(44),
   },
   text: {
-    ...theme.textVariants.bodyBold,
+    ...(theme.textVariants.bodyBold as TextStyle),
     color: theme.colors.base.base2,
   },
 });

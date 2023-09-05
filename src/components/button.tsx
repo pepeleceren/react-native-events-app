@@ -23,9 +23,14 @@ export default function Button(props: any) {
       {...props}
       onPressIn={fadeIn}
       onPressOut={fadeOut}
-      style={[styles.pressable, props.style]}>
+      style={[props.style]}>
       <Animated.View
-        style={[{opacity: animated}, styles.pressable, props.style]}>
+        style={[
+          {opacity: animated},
+          styles.pressable,
+          props.center === false ? null : styles.center,
+          props.style,
+        ]}>
         {props.children}
       </Animated.View>
     </Pressable>
@@ -35,6 +40,8 @@ export default function Button(props: any) {
 const styles = StyleSheet.create({
   pressable: {
     flexDirection: 'row',
+  },
+  center: {
     alignItems: 'center',
     justifyContent: 'center',
   },
