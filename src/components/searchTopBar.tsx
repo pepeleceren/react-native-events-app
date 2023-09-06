@@ -25,9 +25,7 @@ const SearchTopBar = (props: any) => {
         />
       </View>
       <View style={styles.containerRight}>
-        <Button
-          style={styles.filterContainer}
-          onPress={() => props.navigation.navigate('Search')}>
+        <Button style={styles.filterContainer} onPress={props.onPressModal}>
           <Filter
             width={screenNormalizer.widthPixel(20)}
             height={screenNormalizer.heightPixel(20)}

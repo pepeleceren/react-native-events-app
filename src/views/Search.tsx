@@ -1,11 +1,15 @@
-import React from 'react';
-import {View, Text, StyleSheet, TextStyle} from 'react-native';
-import SearchTopBar from '../components/searchTopBar';
+import React, {useCallback, useRef} from 'react';
+import {View, StyleSheet, TextStyle, Text} from 'react-native';
+
 import {screenNormalizer, theme} from '../utils/theme';
+
+import SearchTopBar from '../components/searchTopBar';
 import ListLabel from '../components/listLabel';
 import Carousel from '../components/carousel';
-import VerCard from '../components/verCard';
 import HorCard from '../components/horCard';
+
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
+import BottomSheet from '../components/bottomSheet';
 
 const data = [
   {
@@ -45,9 +49,23 @@ const data = [
 
 function SearchScreen({navigation}: any) {
   const [text, setText] = React.useState('');
+
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
+  // callbacks
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+
   return (
     <View>
+      <BottomSheet bottomSheetModalRef={bottomSheetModalRef}>
+        <View style={styles.contentContainer}>
+          <Text>Awesome 🎉</Text>
+        </View>
+      </BottomSheet>
       <SearchTopBar
+        onPressModal={handlePresentModalPress}
         searchText={text}
         setSearchText={setText}
         navigation={navigation}
@@ -88,6 +106,16 @@ const styles = StyleSheet.create({
   emptyText: {
     ...(theme.textVariants.subheadDefault as TextStyle),
     color: theme.colors.label.primary,
+  },
+  container: {
+    flex: 1,
+    padding: 24,
+    justifyContent: 'center',
+    backgroundColor: 'grey',
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 

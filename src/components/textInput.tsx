@@ -34,16 +34,18 @@ const TextInput = (props: any) => {
   }
 
   return (
-    <View style={[styles.container, isFocused && styles.inputActive]}>
+    <View style={[styles.container, isFocused && styles.inputContainerActive]}>
       <View style={styles.searchContainer}>
         <Search
           width={screenNormalizer.widthPixel(21)}
           height={screenNormalizer.heightPixel(22)}
-          fill={theme.colors.label.tertiary}
+          fill={
+            isFocused ? theme.colors.label.primary : theme.colors.label.tertiary
+          }
         />
       </View>
       <Input
-        style={styles.input}
+        style={[styles.input, isFocused && styles.inputActive]}
         onChangeText={onChangeText}
         value={text}
         onFocus={() => setFocus(true)}
@@ -56,7 +58,11 @@ const TextInput = (props: any) => {
           <Closecircle
             width={screenNormalizer.widthPixel(20)}
             height={screenNormalizer.heightPixel(20)}
-            fill={theme.colors.label.tertiary}
+            fill={
+              isFocused
+                ? theme.colors.label.primary
+                : theme.colors.label.tertiary
+            }
           />
         </Button>
       )}
@@ -88,9 +94,13 @@ const styles = StyleSheet.create({
   searchContainer: {
     flex: 1,
   },
-  inputActive: {
+  inputContainerActive: {
     borderWidth: screenNormalizer.sensHeightPixel(2),
     borderColor: theme.colors.tint.tint,
+    color: theme.colors.label.primary,
+  },
+  inputActive: {
+    color: theme.colors.label.primary,
   },
   cancelContainer: {
     flex: 1,

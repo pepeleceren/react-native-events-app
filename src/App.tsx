@@ -3,6 +3,8 @@ import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 import HomeScreen from './views/Home';
 import MapScreen from './views/Map';
@@ -36,24 +38,29 @@ export const Context: any = React.createContext({});
 
 function App(): JSX.Element {
   return (
-    <Context.Provider value={{theme: theme, normalization: screenNormalizer}}>
-      <SafeAreaView style={styles.safeArea}>
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={theme.colors.background.primary}
-        />
-        <NavigationContainer>
-          <Tab.Navigator
-            tabBar={tabBarFunc}
-            screenOptions={{headerShown: false}}>
-            <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-            <Tab.Screen name="Map" component={MapScreen} />
-            <Tab.Screen name="PastEvents" component={PastEventsScreen} />
-            <Tab.Screen name="Account" component={AccountScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </SafeAreaView>
-    </Context.Provider>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <BottomSheetModalProvider>
+        <Context.Provider
+          value={{theme: theme, normalization: screenNormalizer}}>
+          <SafeAreaView style={styles.safeArea}>
+            <StatusBar
+              barStyle="dark-content"
+              backgroundColor={theme.colors.background.primary}
+            />
+            <NavigationContainer>
+              <Tab.Navigator
+                tabBar={tabBarFunc}
+                screenOptions={{headerShown: false}}>
+                <Tab.Screen name="HomeStack" component={HomeStackScreen} />
+                <Tab.Screen name="Map" component={MapScreen} />
+                <Tab.Screen name="PastEvents" component={PastEventsScreen} />
+                <Tab.Screen name="Account" component={AccountScreen} />
+              </Tab.Navigator>
+            </NavigationContainer>
+          </SafeAreaView>
+        </Context.Provider>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }
 
