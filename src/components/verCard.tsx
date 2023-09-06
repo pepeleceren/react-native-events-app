@@ -13,7 +13,7 @@ const VerCard = (props: any) => {
         <Image
           style={styles.eventLogo}
           source={{
-            uri: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80',
+            uri: `${props.imageUri}`,
           }}
         />
         <View style={styles.titleContainer}>
@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     borderWidth: screenNormalizer.sensHeightPixel(0.33),
     borderColor: theme.colors.seperetor,
     justifyContent: 'space-between',
-    margin: 10,
+    marginVertical: 10,
+    marginLeft: 16,
   },
   eventLogo: {
     width: screenNormalizer.widthPixel(262),

@@ -1,5 +1,7 @@
 export {default as Account} from './Account';
+export {default as Arrowleft} from './Arrowleft';
 export {default as Category} from './Category';
+export {default as Closecircle} from './Closecircle';
 export {default as Date} from './Date';
 export {default as Filter} from './Filter';
 export {default as History} from './History';

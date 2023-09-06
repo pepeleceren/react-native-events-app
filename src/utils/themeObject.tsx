@@ -38,6 +38,13 @@ const themeObject = {
     xl: 40,
   },
   textVariants: {
+    title3: {
+      fontFamily: 'SF Pro Text',
+      fontSize: screenNormalizer.fontPixel(20),
+      fontStyle: 'normal',
+      fontWeight: '300',
+      lineHeight: screenNormalizer.fontPixel(25),
+    },
     bodyBold: {
       fontFamily: 'SF Pro Text',
       fontSize: screenNormalizer.fontPixel(17),
