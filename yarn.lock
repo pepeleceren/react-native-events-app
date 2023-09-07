@@ -6240,6 +6240,13 @@ react-is@^17.0.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-date-picker@^4.2.14:
+  version "4.2.14"
+  resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-4.2.14.tgz#ebeb3bf8d682268a4e405decde1e72ab95ecffb7"
+  integrity sha512-rP0ycj3I+8x4pIUGjeh7pL+cMPntKccLGX/OXx790bsIM0Hcyg0ZL86kGnnZu9fEUhXlgdr3OK/jhQue5L6kSQ==
+  dependencies:
+    prop-types "^15.8.1"
+
 react-native-gesture-handler@^2.12.1:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.12.1.tgz#f11a99fb95169810c6886fad5efa01a17fd81660"

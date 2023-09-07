@@ -66,6 +66,13 @@ const themeObject = {
       fontWeight: '400',
       lineHeight: screenNormalizer.fontPixel(20),
     },
+    subheadBold: {
+      fontFamily: 'SF Pro Text',
+      fontSize: screenNormalizer.fontPixel(15),
+      fontStyle: 'normal',
+      fontWeight: '700',
+      lineHeight: screenNormalizer.fontPixel(20),
+    },
     footnoteBold: {
       fontFamily: 'SF Pro Text',
       fontSize: screenNormalizer.fontPixel(13),

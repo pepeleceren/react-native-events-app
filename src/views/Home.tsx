@@ -2,7 +2,7 @@
 import React from 'react';
 import {View} from 'react-native';
 
-import HomeTopBar from '../components/homeTopBar';
+import HomeTopBar from '../sections/homeTopBar';
 import VerCard from '../components/verCard';
 import HorCard from '../components/horCard';
 import Carousel from '../components/carousel';

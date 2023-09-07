@@ -9,8 +9,8 @@ const TextInput = (props: any) => {
   const [isTextChanged, setTextChanged] = React.useState(false);
   const [isFocused, setFocus] = React.useState(false);
 
-  const text = props.searchText;
-  const setText = props.setSearchText;
+  const text = props.text;
+  const setText = props.setText;
 
   useEffect(() => {
     if (text === '') {
@@ -35,15 +35,19 @@ const TextInput = (props: any) => {
 
   return (
     <View style={[styles.container, isFocused && styles.inputContainerActive]}>
-      <View style={styles.searchContainer}>
-        <Search
-          width={screenNormalizer.widthPixel(21)}
-          height={screenNormalizer.heightPixel(22)}
-          fill={
-            isFocused ? theme.colors.label.primary : theme.colors.label.tertiary
-          }
-        />
-      </View>
+      {props.searchIcon !== false && (
+        <View style={styles.searchContainer}>
+          <Search
+            width={screenNormalizer.widthPixel(21)}
+            height={screenNormalizer.heightPixel(22)}
+            fill={
+              isFocused
+                ? theme.colors.label.primary
+                : theme.colors.label.tertiary
+            }
+          />
+        </View>
+      )}
       <Input
         style={[styles.input, isFocused && styles.inputActive]}
         onChangeText={onChangeText}
@@ -53,7 +57,7 @@ const TextInput = (props: any) => {
         placeholder="Search"
         placeholderTextColor={theme.colors.label.tertiary}
       />
-      {isTextChanged && (
+      {props.searchIcon !== false && isTextChanged && (
         <Button onPress={onCancel} style={styles.cancelContainer}>
           <Closecircle
             width={screenNormalizer.widthPixel(20)}

@@ -1,8 +1,8 @@
 import {StyleSheet, Text, TextStyle, View, Image} from 'react-native';
 import React from 'react';
 import {theme, screenNormalizer} from '../utils/theme';
-import {Map, Search} from './icons';
-import Button from './button';
+import {Map, Search} from '../components/icons';
+import Button from '../components/button';
 
 const HomeTopBar = (props: any) => {
   return (

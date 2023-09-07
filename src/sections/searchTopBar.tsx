@@ -1,9 +1,9 @@
 import {StyleSheet, Text, TextStyle, View} from 'react-native';
 import React from 'react';
 import {theme, screenNormalizer} from '../utils/theme';
-import {Arrowleft, Filter} from './icons';
-import Button from './button';
-import TextInput from './textInput';
+import {Arrowleft, Filter} from '../components/icons';
+import Button from '../components/button';
+import TextInput from '../components/textInput';
 
 const SearchTopBar = (props: any) => {
   return (
@@ -19,10 +19,7 @@ const SearchTopBar = (props: any) => {
         <Text style={styles.backText}>Back</Text>
       </Button>
       <View style={styles.containerCenter}>
-        <TextInput
-          searchText={props.searchText}
-          setSearchText={props.setSearchText}
-        />
+        <TextInput text={props.searchText} setText={props.setSearchText} />
       </View>
       <View style={styles.containerRight}>
         <Button style={styles.filterContainer} onPress={props.onPressModal}>

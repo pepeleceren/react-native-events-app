@@ -38,7 +38,7 @@ export const Context: any = React.createContext({});
 
 function App(): JSX.Element {
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+    <GestureHandlerRootView style={styles.handler}>
       <BottomSheetModalProvider>
         <Context.Provider
           value={{theme: theme, normalization: screenNormalizer}}>
@@ -68,6 +68,9 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: theme.colors.background.primary,
+  },
+  handler: {
+    flex: 1,
   },
 });
 
