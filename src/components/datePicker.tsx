@@ -23,6 +23,10 @@ const DatePick = (props: any) => {
         props.style,
         isFocused && styles.inputContainerActive,
       ]}
+      onPressIn={() =>
+        date.toDateString() === new Date(0).toDateString() &&
+        setDate(new Date())
+      }
       onPress={onFocus}>
       <DatePicker
         modal
@@ -40,7 +44,9 @@ const DatePick = (props: any) => {
         }}
       />
       <Text style={[styles.input, isFocused && styles.inputActive]}>
-        {date.toISOString().split('T')[0]}
+        {date.toDateString() === new Date(0).toDateString()
+          ? 'e.g. 19/07/2023'
+          : date.toISOString().split('T')[0]}
       </Text>
       <DateIcon
         width={screenNormalizer.widthPixel(20)}

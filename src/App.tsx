@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -16,6 +16,7 @@ import DetailScreen from './views/Detail';
 import TabBar from './components/tabBar';
 
 import {theme, screenNormalizer} from './utils/theme';
+import {lastEventsData, popularEventsData} from './utils/api';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -37,11 +38,29 @@ function tabBarFunc(props: any) {
 export const Context: any = React.createContext({});
 
 function App(): JSX.Element {
+  const [eventsList, setEventsList] = useState([]);
+  const [popularEventsList, setpopularEventsList] = useState([]);
+  const [loading, setLastLoading] = useState(false);
+
+  useEffect(() => {
+    lastEventsData(setEventsList, setLastLoading);
+  }, [eventsList]);
+
+  useEffect(() => {
+    popularEventsData(setpopularEventsList);
+  }, [popularEventsList]);
+
   return (
     <GestureHandlerRootView style={styles.handler}>
       <BottomSheetModalProvider>
         <Context.Provider
-          value={{theme: theme, normalization: screenNormalizer}}>
+          value={{
+            theme: theme,
+            normalization: screenNormalizer,
+            lastEventsList: eventsList,
+            popularEventsList: popularEventsList,
+            loadingLast: loading,
+          }}>
           <SafeAreaView style={styles.safeArea}>
             <StatusBar
               barStyle="dark-content"

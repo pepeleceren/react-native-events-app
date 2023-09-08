@@ -10,9 +10,7 @@ const BottomSheet = (props: any) => {
   // variables
   const snapPoints = useMemo(() => ['25%', '60%'], []);
 
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
-  }, []);
+  const handleSheetChanges = useCallback((_index: number) => {}, []);
 
   // renders
   const renderBackdrop = useCallback(

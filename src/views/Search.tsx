@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {View} from 'react-native';
 
 import SearchTopBar from '../sections/searchTopBar';
@@ -9,46 +9,19 @@ import HorCard from '../components/horCard';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import FilterBottomSheet from '../sections/filterBottomSheet';
 
-const data = [
-  {
-    id: 1,
-    title: 'Konser',
-    category: 'Concert',
-    time: '17:00',
-    city: 'Istanbul',
-    day: '25',
-    month: 'SEP',
-    imageUri:
-      'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80',
-  },
-  {
-    id: 2,
-    title: 'Food Fest',
-    category: 'Fest',
-    time: '22:00',
-    city: 'Bursa',
-    day: '25',
-    month: 'AUG',
-    imageUri:
-      'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80',
-  },
-  {
-    id: 3,
-    title: 'Konser',
-    category: 'Concert',
-    time: '17:00',
-    city: 'Istanbul',
-    day: '25',
-    month: 'SEP',
-    imageUri:
-      'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80',
-  },
-];
+import {searchEventsData, categoryData} from '../utils/api';
 
 function SearchScreen({navigation}: any) {
+  const nextDate = new Date();
+  nextDate.setFullYear(nextDate.getFullYear() + 1);
+  const previousDate = new Date();
+  previousDate.setFullYear(previousDate.getFullYear() - 1);
+  const [dataSelect, setDataSelect] = useState([]);
   const [text, setText] = useState('');
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date(0));
+  const [endDate, setEndDate] = useState(new Date(0));
+  const [selected, setSelected] = useState('');
+  const [searchData, setSearchData] = useState([]);
 
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
@@ -56,6 +29,20 @@ function SearchScreen({navigation}: any) {
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
   }, []);
+
+  useEffect(() => {
+    categoryData(setDataSelect);
+  }, [dataSelect]);
+
+  useEffect(() => {
+    searchEventsData(
+      setSearchData,
+      text,
+      startDate.toISOString().split('T')[0],
+      endDate.toISOString().split('T')[0],
+      selected,
+    );
+  }, [text, startDate, endDate, selected]);
 
   return (
     <View>
@@ -65,6 +52,9 @@ function SearchScreen({navigation}: any) {
         end={endDate}
         setStart={setStartDate}
         setEnd={setEndDate}
+        selectedCategory={selected}
+        setSelectedCategory={setSelected}
+        dataSelect={dataSelect}
       />
       <SearchTopBar
         onPressModal={handlePresentModalPress}
@@ -72,28 +62,27 @@ function SearchScreen({navigation}: any) {
         setSearchText={setText}
         navigation={navigation}
       />
-      {text === '' && (
-        <View>
-          <ListLabel label="Popular Events" />
-          <Carousel
-            data={data}
-            horizontal={false}
-            renderItem={({item, _index}: any) => {
-              return (
-                <HorCard
-                  imageUri={item.imageUri}
-                  title={item.title}
-                  category={item.category}
-                  time={item.time}
-                  city={item.city}
-                  day={item.day}
-                  month={item.month}
-                />
-              );
-            }}
-          />
-        </View>
-      )}
+
+      <View>
+        <ListLabel label="Popular Events" />
+        <Carousel
+          data={searchData}
+          horizontal={false}
+          renderItem={({item, _index}: any) => {
+            return (
+              <HorCard
+                imageUri={item.images[0].upload}
+                title={item.title}
+                category={item.category_name}
+                time={item.time}
+                city={item.city}
+                day={item.eventDay}
+                month={item.eventMonth}
+              />
+            );
+          }}
+        />
+      </View>
     </View>
   );
 }

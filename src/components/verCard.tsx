@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titleText: {
-    ...(theme.textVariants.bodyBold as TextStyle),
+    ...(theme.textVariants.footnoteBold as TextStyle),
     color: theme.colors.label.primary,
   },
   bottomContainer: {
