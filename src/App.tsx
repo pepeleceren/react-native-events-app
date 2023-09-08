@@ -44,11 +44,11 @@ function App(): JSX.Element {
 
   useEffect(() => {
     lastEventsData(setEventsList, setLastLoading);
-  }, [eventsList]);
+  }, []);
 
   useEffect(() => {
     popularEventsData(setpopularEventsList);
-  }, [popularEventsList]);
+  }, []);
 
   return (
     <GestureHandlerRootView style={styles.handler}>

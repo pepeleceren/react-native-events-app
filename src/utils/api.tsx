@@ -1,13 +1,6 @@
 import axios from 'axios';
 const baseUrl = 'http://event.ceeren.com';
 
-const axiosClient = axios.create({
-  baseURL: baseUrl,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
 const categoryData = async (setX: any) => {
   await axios({
     method: 'get',
@@ -77,10 +70,4 @@ const searchEventsData = async (
     });
 };
 
-export {
-  lastEventsData,
-  popularEventsData,
-  axiosClient,
-  searchEventsData,
-  categoryData,
-};
+export {lastEventsData, popularEventsData, searchEventsData, categoryData};

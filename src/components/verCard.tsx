@@ -10,12 +10,7 @@ const VerCard = (props: any) => {
   return (
     <Button center={true}>
       <View style={styles.container}>
-        <Image
-          style={styles.eventLogo}
-          source={{
-            uri: `${props.imageUri}`,
-          }}
-        />
+        <Image style={styles.eventLogo} source={props.imageUri} />
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>{props.title}</Text>
         </View>
@@ -87,7 +82,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   locationText: {
-    ...(theme.textVariants.bodyDefault as TextStyle),
+    ...(theme.textVariants.subheadDefault as TextStyle),
     color: theme.colors.label.primary,
     marginLeft: screenNormalizer.pixelSizeHorizontal(2),
   },

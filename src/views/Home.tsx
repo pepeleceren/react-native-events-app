@@ -25,9 +25,14 @@ function HomeScreen({navigation}: any) {
               <Carousel
                 data={data}
                 renderItem={({item, _index}: any) => {
+                  console.log(item.images);
                   return (
                     <VerCard
-                      imageUri={item.images[0].upload}
+                      imageUri={
+                        item.images.length === 0
+                          ? require('../images/notfound.jpg')
+                          : {uri: item.images[0].upload}
+                      }
                       title={item.title}
                       category={item.category_name}
                       time={item.time}
@@ -50,7 +55,11 @@ function HomeScreen({navigation}: any) {
             return (
               <HorCard
                 scrollEnabled={false}
-                imageUri={item.images[0].upload}
+                imageUri={
+                  item.images.length === 0
+                    ? require('../images/notfound.jpg')
+                    : {uri: item.images[0].upload}
+                }
                 title={item.title}
                 category={item.category_name}
                 time={item.time}

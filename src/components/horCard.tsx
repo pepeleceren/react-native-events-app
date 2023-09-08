@@ -10,12 +10,7 @@ const HorCard = (props: any) => {
   return (
     <Button center={true}>
       <View style={styles.container}>
-        <Image
-          style={styles.eventLogo}
-          source={{
-            uri: `${props.imageUri}`,
-          }}
-        />
+        <Image style={styles.eventLogo} source={props.imageUri} />
         <View style={styles.sideContainer}>
           <View style={styles.titleContainer}>
             <Text style={styles.titleText}>{props.title}</Text>
@@ -27,8 +22,8 @@ const HorCard = (props: any) => {
             </View>
             <View style={styles.locationContainer}>
               <Map
-                width={screenNormalizer.widthPixel(15)}
-                height={screenNormalizer.heightPixel(15)}
+                width={screenNormalizer.widthPixel(14)}
+                height={screenNormalizer.heightPixel(14)}
                 fill={theme.colors.label.primary}
               />
               <Text style={styles.locationText}>{props.city}</Text>
@@ -92,7 +87,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   locationText: {
-    ...(theme.textVariants.bodyDefault as TextStyle),
+    ...(theme.textVariants.subheadDefault as TextStyle),
     color: theme.colors.label.primary,
     marginLeft: screenNormalizer.pixelSizeHorizontal(2),
   },

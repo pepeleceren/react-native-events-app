@@ -75,14 +75,14 @@ const themeObject = {
     },
     footnoteBold: {
       fontFamily: 'SF Pro Text',
-      fontSize: screenNormalizer.fontPixel(13),
+      fontSize: screenNormalizer.fontPixel(12),
       fontStyle: 'normal',
       fontWeight: '700',
       lineHeight: screenNormalizer.fontPixel(18),
     },
     footnoteDefault: {
       fontFamily: 'SF Pro Text',
-      fontSize: screenNormalizer.fontPixel(13),
+      fontSize: screenNormalizer.fontPixel(12),
       fontStyle: 'normal',
       fontWeight: '400',
       lineHeight: screenNormalizer.fontPixel(18),

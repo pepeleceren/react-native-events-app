@@ -32,7 +32,7 @@ function SearchScreen({navigation}: any) {
 
   useEffect(() => {
     categoryData(setDataSelect);
-  }, [dataSelect]);
+  }, []);
 
   useEffect(() => {
     searchEventsData(

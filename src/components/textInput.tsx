@@ -56,6 +56,7 @@ const TextInput = (props: any) => {
         onBlur={() => setFocus(false)}
         placeholder="Search"
         placeholderTextColor={theme.colors.label.tertiary}
+        textAlignVertical={'center'}
       />
       {props.searchIcon !== false && isTextChanged && (
         <Button onPress={onCancel} style={styles.cancelContainer}>
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: screenNormalizer.heightPixel(36),
+    height: screenNormalizer.heightPixel(37),
     width: screenNormalizer.heightPixel(221),
     borderWidth: screenNormalizer.sensHeightPixel(0.5),
     borderColor: theme.colors.seperetor,
@@ -94,6 +95,8 @@ const styles = StyleSheet.create({
     flex: 8,
     marginLeft: screenNormalizer.pixelSizeHorizontal(12),
     color: theme.colors.label.tertiary,
+    paddingTop: 0,
+    paddingBottom: 0,
   },
   searchContainer: {
     flex: 1,
