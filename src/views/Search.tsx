@@ -1,4 +1,10 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import {View} from 'react-native';
 
 import SearchTopBar from '../sections/searchTopBar';
@@ -9,29 +15,28 @@ import HorCard from '../components/horCard';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import FilterBottomSheet from '../sections/filterBottomSheet';
 
-import {searchEventsData, categoryData} from '../utils/api';
+import {searchEventsData} from '../utils/api';
+import {Context} from '../App';
 
 function SearchScreen({navigation}: any) {
   const nextDate = new Date();
   nextDate.setFullYear(nextDate.getFullYear() + 1);
   const previousDate = new Date();
   previousDate.setFullYear(previousDate.getFullYear() - 1);
-  const [dataSelect, setDataSelect] = useState([]);
   const [text, setText] = useState('');
   const [startDate, setStartDate] = useState(new Date(0));
   const [endDate, setEndDate] = useState(new Date(0));
   const [selected, setSelected] = useState('');
   const [searchData, setSearchData] = useState([]);
 
+  const context: any = useContext(Context);
+  let dataSelect = context.catalogList;
+
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
   // callbacks
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
-  }, []);
-
-  useEffect(() => {
-    categoryData(setDataSelect);
   }, []);
 
   useEffect(() => {
@@ -71,7 +76,11 @@ function SearchScreen({navigation}: any) {
           renderItem={({item, _index}: any) => {
             return (
               <HorCard
-                imageUri={item.images[0].upload}
+                imageUri={
+                  item.images.length === 0
+                    ? require('../images/notfound.jpg')
+                    : {uri: item.images[0].upload}
+                }
                 title={item.title}
                 category={item.category_name}
                 time={item.time}

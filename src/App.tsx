@@ -16,7 +16,12 @@ import DetailScreen from './views/Detail';
 import TabBar from './components/tabBar';
 
 import {theme, screenNormalizer} from './utils/theme';
-import {lastEventsData, popularEventsData} from './utils/api';
+import {
+  lastEventsData,
+  popularEventsData,
+  pastEventsData,
+  categoryData,
+} from './utils/api';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -40,6 +45,8 @@ export const Context: any = React.createContext({});
 function App(): JSX.Element {
   const [eventsList, setEventsList] = useState([]);
   const [popularEventsList, setpopularEventsList] = useState([]);
+  const [pastEventsList, setPastEventsList] = useState([]);
+  const [catalogList, setCatalogList] = useState([]);
   const [loading, setLastLoading] = useState(false);
 
   useEffect(() => {
@@ -48,6 +55,14 @@ function App(): JSX.Element {
 
   useEffect(() => {
     popularEventsData(setpopularEventsList);
+  }, []);
+
+  useEffect(() => {
+    pastEventsData(setPastEventsList);
+  }, []);
+
+  useEffect(() => {
+    categoryData(setCatalogList);
   }, []);
 
   return (
@@ -60,6 +75,8 @@ function App(): JSX.Element {
             lastEventsList: eventsList,
             popularEventsList: popularEventsList,
             loadingLast: loading,
+            pastEventsList: pastEventsList,
+            catalogList: catalogList,
           }}>
           <SafeAreaView style={styles.safeArea}>
             <StatusBar

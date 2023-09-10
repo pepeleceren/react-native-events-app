@@ -25,7 +25,6 @@ function HomeScreen({navigation}: any) {
               <Carousel
                 data={data}
                 renderItem={({item, _index}: any) => {
-                  console.log(item.images);
                   return (
                     <VerCard
                       imageUri={

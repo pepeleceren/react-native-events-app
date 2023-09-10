@@ -26,7 +26,7 @@ const lastEventsData = async (setX: any, setLoad: any) => {
       setLoad(true);
     })
     .catch(error => {
-      console.log(error);
+      console.log(error, 'eventsList');
     });
 };
 
@@ -40,7 +40,7 @@ const popularEventsData = async (setX: any) => {
       setX(response.data);
     })
     .catch(error => {
-      console.log(error);
+      console.log(error, 'popular');
     });
 };
 
@@ -66,8 +66,30 @@ const searchEventsData = async (
       setX(response.data);
     })
     .catch(error => {
-      console.log(error);
+      console.log(error, 'search');
     });
 };
 
-export {lastEventsData, popularEventsData, searchEventsData, categoryData};
+const pastEventsData = async (setX: any) => {
+  let endDate = new Date().toISOString().split('T')[0];
+  console.log(endDate);
+  await axios({
+    method: 'get',
+    url: `${baseUrl}/api/events/?eventDate__lte=${endDate}`,
+    timeout: 5000,
+  })
+    .then(response => {
+      setX(response.data);
+    })
+    .catch(error => {
+      console.log(error, 'pastEvents');
+    });
+};
+
+export {
+  lastEventsData,
+  popularEventsData,
+  searchEventsData,
+  categoryData,
+  pastEventsData,
+};
