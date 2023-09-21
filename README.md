@@ -1,8 +1,57 @@
+# App UI/UX Design - Figma
+
+![figma design](https://github.com/pepeleceren/react-native-events-app/blob/main/AppImages/figmaDesign.png?raw=true)
+
+- [`@figma file`](https://www.figma.com/file/ldGawyfKGj6OqFhk4uMiu6/Ceren's-Events-App?type=design&node-id=0%3A1&mode=design&t=Y5FUCfOohIMn7EGQ-1) - Figma file of this app.
+
+&nbsp;
+
+## App Pages Status on Figma
+
+- [x] Home
+- [x] Search
+- [x] Detail
+- [x] Map
+- [x] Past Events
+- [ ] Account
+
+&nbsp;
+
+# App Images - IOS
+
+![app images ios](https://github.com/pepeleceren/react-native-events-app/blob/main/AppImages/AppImagesIOS.png?raw=true)
+
+&nbsp;
+
+## App Pages Status on React Native
+
+- [x] Home
+- [x] Search
+- [ ] Detail
+- [x] Map
+- [x] Past Events
+- [ ] Account
+
+&nbsp;
+
+# Backend
+
+- [`events.ceeren.com`](http://event.ceeren.com/api/events/) - Backend site of this app.
+
+Backend is written by Django. It will be shared in this repo soon.
+
+&nbsp;
+
+# React Native - Getting Started
+
+<details>
+<summary>Click to toggle contents</summary>
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -77,3 +126,4 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+</details>
