@@ -26,6 +26,7 @@ const themeObject = {
       tint: palette.blue[7],
       tint2: palette.blue[8],
       tintTapState: palette.blue[9],
+      tintPassive: hexToRGBA(palette.blue[7], 37),
     },
     seperetor: hexToRGBA(palette.grey[6], 37),
     ...palette,

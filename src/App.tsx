@@ -7,7 +7,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 import HomeScreen from './views/Home';
-import MapScreen from './views/Map';
+import MapScreen from './views/Map-copy';
 import PastEventsScreen from './views/PastEvents';
 import AccountScreen from './views/Account';
 import SearchScreen from './views/Search';
