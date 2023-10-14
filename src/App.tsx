@@ -36,6 +36,16 @@ function HomeStackScreen() {
   );
 }
 
+function PastEventsStackScreen() {
+  return (
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
+      <HomeStack.Screen name="PastEvents" component={PastEventsScreen} />
+      <HomeStack.Screen name="Search" component={SearchScreen} />
+      <HomeStack.Screen name="Detail" component={DetailScreen} />
+    </HomeStack.Navigator>
+  );
+}
+
 function tabBarFunc(props: any) {
   return <TabBar {...props} />;
 }
@@ -89,7 +99,10 @@ function App(): JSX.Element {
                 screenOptions={{headerShown: false}}>
                 <Tab.Screen name="HomeStack" component={HomeStackScreen} />
                 <Tab.Screen name="Map" component={MapScreen} />
-                <Tab.Screen name="PastEvents" component={PastEventsScreen} />
+                <Tab.Screen
+                  name="PastEventsStack"
+                  component={PastEventsStackScreen}
+                />
                 <Tab.Screen name="Account" component={AccountScreen} />
               </Tab.Navigator>
             </NavigationContainer>

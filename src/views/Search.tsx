@@ -18,7 +18,12 @@ import FilterBottomSheet from '../sections/filterBottomSheet';
 import {searchEventsData} from '../utils/api';
 import {Context} from '../App';
 
-function SearchScreen({navigation}: any) {
+function SearchScreen({route, navigation}: any) {
+  const context: any = useContext(Context);
+  let dataSelect = context.catalogList;
+  const categoryFilterId = dataSelect.find(
+    (element: any) => element.name === route.params.categoryFilter,
+  ).id;
   const nextDate = new Date();
   nextDate.setFullYear(nextDate.getFullYear() + 1);
   const previousDate = new Date();
@@ -26,12 +31,8 @@ function SearchScreen({navigation}: any) {
   const [text, setText] = useState('');
   const [startDate, setStartDate] = useState(new Date(0));
   const [endDate, setEndDate] = useState(new Date(0));
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState([categoryFilterId]);
   const [searchData, setSearchData] = useState([]);
-
-  const context: any = useContext(Context);
-  let dataSelect = context.catalogList;
-
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
   // callbacks
@@ -48,7 +49,6 @@ function SearchScreen({navigation}: any) {
       selected,
     );
   }, [text, startDate, endDate, selected]);
-
   return (
     <View>
       <FilterBottomSheet

@@ -75,7 +75,7 @@ const pastEventsData = async (setX: any) => {
   console.log(endDate);
   await axios({
     method: 'get',
-    url: `${baseUrl}/api/events/?eventDate__lte=${endDate}`,
+    url: `${baseUrl}/api/events/?eventDate__lt=${endDate}`,
     timeout: 5000,
   })
     .then(response => {

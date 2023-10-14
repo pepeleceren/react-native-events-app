@@ -5,10 +5,20 @@ import {Map} from './icons';
 import Button from './button';
 import CardTag from './cardTag';
 import CardDateTag from './cardDateTag';
+import {useNavigation} from '@react-navigation/native';
 
 const VerCard = (props: any) => {
+  const navigation: any = useNavigation();
   return (
-    <Button center={true}>
+    <Button
+      onPress={() => {
+        /* 1. Navigate to the Details route with params */
+        navigation.navigate('Detail', {
+          itemId: 86,
+          otherParam: 'anything you want here',
+        });
+      }}
+      center={true}>
       <View style={styles.container}>
         <Image style={styles.eventLogo} source={props.imageUri} />
         <View style={styles.titleContainer}>
@@ -16,7 +26,7 @@ const VerCard = (props: any) => {
         </View>
         <View style={styles.bottomContainer}>
           <View style={styles.tagContainer}>
-            <CardTag label={props.category} />
+            <CardTag isCategory={true} label={props.category} />
             <CardTag label={props.time} />
           </View>
           <View style={styles.locationContainer}>

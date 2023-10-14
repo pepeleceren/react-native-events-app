@@ -59,7 +59,7 @@ function TabBar({state, descriptors, navigation}: any) {
                 }
               />
             )}
-            {label === 'PastEvents' && (
+            {label === 'PastEventsStack' && (
               <History
                 height={screenNormalizer.heightPixel(20)}
                 width={screenNormalizer.widthPixel(20)}

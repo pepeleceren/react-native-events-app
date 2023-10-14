@@ -5,19 +5,34 @@ import {Map} from './icons';
 import Button from './button';
 import CardTag from './cardTag';
 import CardDateTag from './cardDateTag';
+import {useNavigation} from '@react-navigation/native';
 
 const HorCard = (props: any) => {
+  const navigation: any = useNavigation();
+  var title;
+  if (props.title.length >= 20) {
+    title = props.title.slice(0, 19).concat('...');
+  } else {
+    title = props.title;
+  }
   return (
-    <Button center={true}>
+    <Button
+      onPress={() => {
+        navigation.navigate('Detail', {
+          itemId: 86,
+          otherParam: 'anything you want here',
+        });
+      }}
+      center={true}>
       <View style={styles.container}>
         <Image style={styles.eventLogo} source={props.imageUri} />
         <View style={styles.sideContainer}>
           <View style={styles.titleContainer}>
-            <Text style={styles.titleText}>{props.title}</Text>
+            <Text style={styles.titleText}>{title}</Text>
           </View>
           <View style={styles.bottomContainer}>
             <View style={styles.tagContainer}>
-              <CardTag label={props.category} />
+              <CardTag isCategory={true} label={props.category} />
               <CardTag label={props.time} />
             </View>
             <View style={styles.locationContainer}>
