@@ -32,6 +32,7 @@ function HomeScreen({navigation}: any) {
                           ? require('../images/notfound.jpg')
                           : {uri: item.images[0].upload}
                       }
+                      isClickable={true}
                       title={item.title}
                       category={item.category_name}
                       time={item.time}

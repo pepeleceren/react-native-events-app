@@ -13,10 +13,12 @@ const VerCard = (props: any) => {
     <Button
       onPress={() => {
         /* 1. Navigate to the Details route with params */
-        navigation.navigate('Detail', {
-          itemId: 86,
-          otherParam: 'anything you want here',
-        });
+        if (props.isClickable === true) {
+          navigation.navigate('Detail', {
+            itemId: 86,
+            otherParam: 'anything you want here',
+          });
+        }
       }}
       center={true}>
       <View style={styles.container}>
