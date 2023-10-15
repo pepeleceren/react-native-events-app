@@ -25,6 +25,7 @@ function PastEventsScreen() {
                   : {uri: item.images[0].upload}
               }
               title={item.title}
+              id={item.id}
               category={item.category_name}
               time={item.time}
               city={item.city}

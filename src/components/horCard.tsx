@@ -19,8 +19,7 @@ const HorCard = (props: any) => {
     <Button
       onPress={() => {
         navigation.navigate('Detail', {
-          itemId: 86,
-          otherParam: 'anything you want here',
+          eventId: props.id,
         });
       }}
       center={true}>

@@ -27,7 +27,7 @@
 
 - [x] Home
 - [x] Search
-- [ ] Detail
+- [x] Detail - Partially Completed
 - [x] Map
 - [x] Past Events
 - [ ] Account

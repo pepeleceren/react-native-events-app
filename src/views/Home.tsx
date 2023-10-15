@@ -33,6 +33,7 @@ function HomeScreen({navigation}: any) {
                           : {uri: item.images[0].upload}
                       }
                       isClickable={true}
+                      id={item.id}
                       title={item.title}
                       category={item.category_name}
                       time={item.time}
@@ -61,6 +62,7 @@ function HomeScreen({navigation}: any) {
                     : {uri: item.images[0].upload}
                 }
                 title={item.title}
+                id={item.id}
                 category={item.category_name}
                 time={item.time}
                 city={item.city}

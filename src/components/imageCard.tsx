@@ -1,13 +1,10 @@
-import {StyleSheet, Text, TextStyle, View, Image} from 'react-native';
+import {StyleSheet, TextStyle, ImageBackground} from 'react-native';
 import React from 'react';
 import {theme, screenNormalizer} from '../utils/theme';
-import {Map} from './icons';
 import Button from './button';
-import CardTag from './cardTag';
-import CardDateTag from './cardDateTag';
 import {useNavigation} from '@react-navigation/native';
 
-const VerCard = (props: any) => {
+const ImageCard = (props: any) => {
   const navigation: any = useNavigation();
   return (
     <Button
@@ -15,56 +12,36 @@ const VerCard = (props: any) => {
         /* 1. Navigate to the Details route with params */
         if (props.isClickable === true) {
           navigation.navigate('Detail', {
-            eventId: props.id,
+            itemId: 86,
+            otherParam: 'anything you want here',
           });
         }
       }}
       center={true}>
-      <View style={styles.container}>
-        <Image style={styles.eventLogo} source={props.imageUri} />
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>{props.title}</Text>
-        </View>
-        <View style={styles.bottomContainer}>
-          <View style={styles.tagContainer}>
-            <CardTag isCategory={true} label={props.category} />
-            <CardTag label={props.time} />
-          </View>
-          <View style={styles.locationContainer}>
-            <Map
-              width={screenNormalizer.widthPixel(15)}
-              height={screenNormalizer.heightPixel(15)}
-              fill={theme.colors.label.primary}
-            />
-            <Text style={styles.locationText}>{props.city}</Text>
-          </View>
-        </View>
-        <View style={styles.cardContainer}>
-          <CardDateTag day={props.day} month={props.month} />
-        </View>
-      </View>
+      <ImageBackground
+        source={props.imageUri}
+        resizeMode="contain"
+        imageStyle={styles.eventLogo}
+        style={styles.container}
+      />
     </Button>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: screenNormalizer.heightPixel(249),
-    width: screenNormalizer.widthPixel(294),
+    height: screenNormalizer.heightPixel(200),
+    width: screenNormalizer.widthPixel(320),
     flexDirection: 'column',
     paddingVertical: screenNormalizer.pixelSizeVertical(16),
     paddingHorizontal: screenNormalizer.pixelSizeHorizontal(16),
     backgroundColor: theme.colors.background.primary,
     borderRadius: screenNormalizer.widthPixel(16),
-    borderWidth: screenNormalizer.sensHeightPixel(0.33),
-    borderColor: theme.colors.seperetor,
     justifyContent: 'space-between',
     marginVertical: 10,
     marginLeft: 16,
   },
   eventLogo: {
-    width: screenNormalizer.widthPixel(262),
-    height: screenNormalizer.heightPixel(149),
     borderRadius: screenNormalizer.widthPixel(10),
     borderWidth: screenNormalizer.sensHeightPixel(0.33),
     borderColor: theme.colors.seperetor,
@@ -104,4 +81,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VerCard;
+export default ImageCard;

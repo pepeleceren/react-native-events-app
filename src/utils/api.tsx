@@ -86,10 +86,26 @@ const pastEventsData = async (setX: any) => {
     });
 };
 
+const detailEventData = async (setX: any, setLoad: any, eventId: any) => {
+  await axios({
+    method: 'get',
+    url: `${baseUrl}/api/events/${eventId}`,
+    timeout: 5000,
+  })
+    .then(response => {
+      setX(response.data[0]);
+      setLoad(true);
+    })
+    .catch(error => {
+      console.log(error, 'eventsList');
+    });
+};
+
 export {
   lastEventsData,
   popularEventsData,
   searchEventsData,
   categoryData,
   pastEventsData,
+  detailEventData,
 };
